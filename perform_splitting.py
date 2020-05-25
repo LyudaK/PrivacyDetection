@@ -9,22 +9,13 @@ import cv2
 import shutil
 import pickle
 
-from sklearn.metrics import precision_score, recall_score, confusion_matrix, classification_report, accuracy_score, \
-    f1_score
-
-import hac as hac
 import numpy as np
-import tensorflow as tf
-import scipy.cluster.hierarchy as hac
-from scipy import misc
-from scipy.spatial.distance import squareform
-
 from configparser import ConfigParser
 
 from facial_analysis import FacialImageProcessing, is_image
-# from facial_clustering import get_facial_clusters
 
-# config values
+
+
 from sklearn import preprocessing
 
 from agl_clustering import clustering_results
@@ -39,8 +30,7 @@ recognizer_list=[['mobnet','_mobnet',0],
                  ['facenet','_facenet',0]]
 recognizer_ind=4
 groupSize = 2
-
-distanceThreshold = 0.95
+distanceThreshold = 1.35
 
 img_size = 224
 if recognizer_list[recognizer_ind][2] == 1:
