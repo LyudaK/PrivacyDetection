@@ -877,7 +877,7 @@ class Ui_Upload(object):
         self.gcn.setText(_translate("Upload", "GCN"))
         self.start.setText(_translate("Upload", "Start"))
         self.label.setText(_translate("Upload", "Enter the group size to set it private"))
-
+global descriptor
 class SecondWindow(QtWidgets.QMainWindow,Ui_Upload):
     def __init__(self):
         super().__init__()
@@ -885,6 +885,46 @@ class SecondWindow(QtWidgets.QMainWindow,Ui_Upload):
         self.chooseDir.clicked.connect(self.onInputFileButtonClicked)
         self.start.clicked.connect(self.showProcessingWindow)
         self.back.clicked.connect(self.hide)
+        self.resnet50.clicked.connect(self.descr_resnet50)
+        self.insightface.clicked.connect(self.descr_insightface)
+        self.mobnet.clicked.connect(self.descr_mobnet)
+        self.vgg16.clicked.connect(self.descr_vgg16)
+        self.facenet.clicked.connect(self.descr_facenet)
+    def descr_resnet50(self):
+        self.resnet50.setChecked(True)
+        self.vgg16.setChecked(False)
+        self.mobnet.setChecked(False)
+        self.insightface.setChecked(False)
+        self.facenet.setChecked(False)
+        descriptor=2
+    def descr_vgg16(self):
+        self.vgg16.setChecked(True)
+        self.resnet50.setChecked(False)
+        self.mobnet.setChecked(False)
+        self.insightface.setChecked(False)
+        self.facenet.setChecked(False)
+        descriptor=1
+    def descr_mobnet(self):
+        self.mobnet.setChecked(True)
+        self.resnet50.setChecked(False)
+        self.vgg16.setChecked(False)
+        self.insightface.setChecked(False)
+        self.facenet.setChecked(False)
+        descriptor=0
+    def descr_insightface(self):
+        self.insightface.setChecked(True)
+        self.resnet50.setChecked(False)
+        self.vgg16.setChecked(False)
+        self.mobnet.setChecked(False)
+        self.facenet.setChecked(False)
+        descriptor=3
+    def descr_facenet(self):
+        self.facenet.setChecked(True)
+        self.resnet50.setChecked(False)
+        self.vgg16.setChecked(False)
+        self.mobnet.setChecked(False)
+        self.insightface.setChecked(False)
+        descriptor=4
 
     def onInputFileButtonClicked(self):
         global folder
@@ -929,6 +969,7 @@ class ThirdWindow(QtWidgets.QMainWindow,Ui_ResultWindow):
         self.results.setText('Completed')
         if self.results.toPlainText()=='Completed':
             self.pause_2.show()
+        self.progressBar.setValue(100)
 
 
 
